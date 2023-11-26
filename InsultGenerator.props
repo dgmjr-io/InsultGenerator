@@ -1,0 +1,8 @@
+<Project>
+  <ItemGroup>
+    <Using Include="Dgmjr.InsultGenerator.Models" />
+  </ItemGroup>
+  <PropertyGroup>
+    <TermsOfServiceUrl>https://terms.dgmjr.io</TermsOfServiceUrl>
+  </PropertyGroup>
+</Project>

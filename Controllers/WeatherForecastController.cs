@@ -1,46 +1,52 @@
-using Microsoft.AspNetCore.Mvc;
+// namespace Dgmjr.WetherForecast.Controllers;
 
-namespace InsultGenerator.Controllers;
+// using Microsoft.AspNetCore.Mvc;
+// using Dgmjr.AspNetCore.Mvc;
+// using Dgmjr.WetherForecast.Models.Abstractions;
+// using Dgmjr.WetherForecast.Models;
 
-[ApiController]
-[Route("[controller]")]
-public class WeatherForecastController : ControllerBase
-{
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing",
-        "Bracing",
-        "Chilly",
-        "Cool",
-        "Mild",
-        "Warm",
-        "Balmy",
-        "Hot",
-        "Sweltering",
-        "Scorching"
-    };
+// [ApiController]
+// [Route("[controller]")]
+// public class WeatherForecastController(ILogger<WeatherForecastController> logger) : ControllerBase
+// {
+//     public static ISummary[] Summaries => Summary.GetAll().ToArray();
+//     public static ICloudCover[] CloudCovers => CloudCover.GetAll().ToArray();
+//     public static IPrecipitation[] Precipitations => Precipitation.GetAll().ToArray();
 
-    private readonly ILogger<WeatherForecastController> _logger;
+//     public ILogger Logger { get; } = logger;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
-    {
-        _logger = logger;
-    }
+//     [HttpGet(Name = "GetWeatherForecast")]
+//     [
+//         ProducesOKResponse<Pager<WeatherForecast>>,
+//         Produces400Error,
+//         Produces500Error,
+//         Produces404Error
+//     ]
+//     public Pager<WeatherForecast> Get()
+//     {
+//         return new Pager<WeatherForecast>(
+//             Enumerable
+//                 .Range(1, 5)
+//                 .Select(
+//                     index =>
+//                         new WeatherForecast
+//                         {
+//                             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+//                             TemperatureC = Random.Shared.Next(-20, 55),
+//                             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+//                         }
+//                 )
+//                 .ToArray(),
+//             1,
+//             5,
+//             5
+//         );
+//     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
-    {
-        return Enumerable
-            .Range(1, 5)
-            .Select(
-                index =>
-                    new WeatherForecast
-                    {
-                        Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                        TemperatureC = Random.Shared.Next(-20, 55),
-                        Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-                    }
-            )
-            .ToArray();
-    }
-}
+//     [HttpGet]
+//     [Produces404Error]
+//     public NotFoundProblemDetails YouDumbFuck()
+//     {
+//         return new NotFoundProblemDetails();
+//     }
+// }
