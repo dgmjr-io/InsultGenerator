@@ -24,10 +24,10 @@ public enum Summary
     [Display(Name = "Balmy 🥵", ShortName = "Balmy")]
     Balmy,
 
-    [Display(Name = "Hot 🥵", ShortName ="Hot")]
+    [Display(Name = "Hot 🥵", ShortName = "Hot")]
     Hot,
 
-    [Display(Name = "Sweltering 🥵", ShortName ="Sweltering")]
+    [Display(Name = "Sweltering 🥵", ShortName = "Sweltering")]
     Sweltering,
 
     [Display(Name = "Scorching 🥵", ShortName = "Scorching")]
