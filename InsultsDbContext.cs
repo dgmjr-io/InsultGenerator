@@ -25,23 +25,23 @@ public class InsultsDbContext(DbContextOptions<InsultsDbContext> options)
 {
     public virtual DbSet<Insult> Insults { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Insult>(builder =>
     {
-        modelBuilder.Entity<Insult>(builder =>
-        {
-            builder.HasKey(e => e.Id);
-            builder
-                .HasMany(e => e.Insults)
-                .WithMany(e => e.Comebacks)
-                .UsingEntity<InsultComeback>(
-                    j => j.HasOne(e => e.Insult).WithMany().HasForeignKey(e => e.InsultId),
-                    j => j.HasOne(e => e.Comeback).WithMany().HasForeignKey(e => e.ComebackId),
-                    j =>
-                    {
-                        j.HasKey(e => e.Id);
-                        j.ToTable("InsultComebacks");
-                    }
-                );
-        });
-    }
+        builder.HasKey(e => e.Id);
+        builder
+            .HasMany(e => e.Insults)
+            .WithMany(e => e.Comebacks)
+            .UsingEntity<InsultComeback>(
+                j => j.HasOne(e => e.Insult).WithMany().HasForeignKey(e => e.InsultId),
+                j => j.HasOne(e => e.Comeback).WithMany().HasForeignKey(e => e.ComebackId),
+                j =>
+                {
+                    j.HasKey(e => e.Id);
+                    j.ToTable("InsultComebacks");
+                }
+            );
+    });
+}
 }

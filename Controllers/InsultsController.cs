@@ -14,7 +14,7 @@ public class InsultsController(ILogger<InsultsController> logger, InsultsDbConte
     : ApiControllerBase<InsultsDbContext>(db, logger)
 {
     [HttpGet("{id:int}/comebacks")]
-    public Pager<Insult> Comebacks(int id, [RangeRequest] Range range) =>
+public Pager<Insult> Comebacks(int id, [RangeRequest] Range range) =>
         new(
             Db.Insults
                 .Include(i => i.Comebacks)
